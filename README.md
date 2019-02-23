@@ -8,3 +8,5 @@ It is a modified version compatible with https://en.wikipedia.org/wiki/User:Rhin
 If you have made a change, please do not commit to master branch or close issue until the code has been copied onto Wikipedia.
 
 Use the Edit description: Copying [link] for change [commit id]. 
+
+Can be found at https://en.wikipedia.org/wiki/User:RhinosF1/StatusChange.js
