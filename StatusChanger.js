@@ -4,8 +4,8 @@
 //     Modified by Xenocidic to simply use /Status as a one word indicator,
 //     Modified by Kraftlos to include Sleep status
 //     Modified by APerson for compatibility with {{UserStatus}}
-// compatible with {{Statustop}} for display
- 
+//     Modified by RhinosF1 for compatibili with his script.
+// compatible with {{User:RhinosF1/Template/StatusMonitor}}
 addOnloadHook(function (){
   //Check if the config is defined
   if (typeof(statusChangerConfig) == 'undefined') {
@@ -13,7 +13,7 @@ addOnloadHook(function (){
   }
  
   if (typeof(statusChangerConfig.statusList) == 'undefined') {
-      statusChangerConfig.statusList = [ 'online', 'offline', 'sleeping' ];
+      statusChangerConfig.statusList = [ 'online', 'offline', 'sleeping', 'around(A)', 'around(R)' ];
   }
  
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
