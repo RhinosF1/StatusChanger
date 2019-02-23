@@ -1,6 +1,6 @@
 //Copied from User:RhinosF1/Template/StatusMonitor
 
-'''User Status:''' {{#switch:{{User:{{{1}}}/Status}}|online={{color box|1=#00FF00}}'' {{User:{{{1}}}/Status}}''|offline={{color box|1=#FF0000}}'' {{User:{{{1}}}/Status}}''|around(A)={{color box|1=orange}}'' around''|around(R)={{colour box|1=red}}'' around''}}<noinclude>
+'''User Status:''' {{#switch:{{User:{{{1}}}/Status}}|online={{color box|1=#00FF00}}|offline={{color box|1=#FF0000}}|around={{color box|1=orange}}}}'' {{User:{{{1}}}/Status}}''<noinclude>
 {{documentation}}
 </noinclude>
 <includeonly>[[Category:Pages using RhinosF1's UserStatus Template]]</includeonly>
