@@ -26,7 +26,7 @@ addOnloadHook(function (){
     var message = (stat === "sleeping") ?  link = "asleep" : link = stat;
     addPortletLink(
       "p-personal", //target tab - personal links
-      wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=edit&newstatus=" + stat, //link URL
+      wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=submit&newstatus=" + stat, //link URL
       stat, //link text
       "pt-status-" + stat, //id of new button
       "I'm " + message + "!", //hover text
@@ -34,9 +34,9 @@ addOnloadHook(function (){
       document.getElementById("pt-logout")); //add before logout button
   }
  
-  if (location.href.indexOf("&action=edit&newstatus=") == -1) return; //Are we here to auto-edit the status?
+  if (location.href.indexOf("&action=submit&newstatus=") == -1) return; //Are we here to auto-edit the status?
   //Get new status
-  statusRegExp = /&action=edit&newstatus=(.*)/;
+  statusRegExp = /&action=submit&newstatus=(.*)/;
   var status = statusRegExp.exec(location.href)[1];
   //Modify the form
   document.getElementById('wpTextbox1').value = status;
