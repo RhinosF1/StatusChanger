@@ -24,6 +24,7 @@ A clear and concise description of what you expected to happen.
  - Mobile/Desktop: 
  - Skin:
  - Your Wiki Username (we can see your other scripts):
- - Site: 
+ - Site:
+ - Browser/OS:
 **Additional context**
 Add any other context about the problem here.
