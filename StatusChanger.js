@@ -22,7 +22,11 @@ addOnloadHook(function (){
  
   //Add the links
   for (var i=0; i<statusChangerConfig.statusList.length; i++) {
-    var stat = statusChangerConfig.statusList[i];
+    var stat0 = statusChangerConfig.statusList[i];
+    var stat1 = statusChangerConfig.statusList[i];
+    var stat2 = statusChangerConfig.statusList[i];
+    var stat3 = statusChangerConfig.statusList[i];
+    var stat4 = statusChangerConfig.statusList[i];
     var message0 = (stat0 === "sleeping") ?  link = "asleep" : link = stat0;
     var message1 = (stat1 === "BOW(A)") ?  link = "busy dealing with something on-wiki" : link = stat1;
     var message2 = (stat2 === "BOW(R)") ?  link = "very busy dealing with something on-wiki" : link = stat2;
