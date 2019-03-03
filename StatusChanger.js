@@ -19,17 +19,16 @@ addOnloadHook(function (){
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
       statusChangerConfig.statusPage = 'User:' + wgUserName + '/Status';
   }
- 
+ var message;
   //Add the links
   for (var i=0; i<statusChangerConfig.statusList.length; i++) {
     var stat = statusChangerConfig.statusList[i];
-var message;
 if (stat === "sleeping") {  message = "asleep" ;
 }
- else if(stat1 === "BOW(A)") {  message = "busy dealing with something on-wiki" ; }
-  else if (stat2 === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
- else if (stat3 === "around(A)") {  message = "around" ;}
-  else if (stat4 === "around(R)") {  message = "around";}
+ else if(stat === "BOW(A)") {  message = "busy dealing with something on-wiki" ; }
+  else if (stat === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
+ else if (stat === "around(A)") {  message = "around" ;}
+  else if (stat === "around(R)") {  message = "around";}
     addPortletLink(
       "p-personal", //target tab - personal links
       wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=submit&newstatus=" + stat, //link URL
@@ -48,7 +47,7 @@ if (stat === "sleeping") {  message = "asleep" ;
   document.getElementById('wpTextbox1').value = status;
   if (status == "sleep")
   { status = "sleeping"; }
-  document.getElementById('wpSummary').value = wgUserName + " is now " + status +".";
+  document.getElementById('wpSummary').value = wgUserName + " is now " + message +".";
   document.getElementById('wpMinoredit').checked = true;
   //Submit it!
   document.getElementById('editform').submit();
