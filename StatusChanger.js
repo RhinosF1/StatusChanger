@@ -13,7 +13,7 @@ addOnloadHook(function (){
   }
  
   if (typeof(statusChangerConfig.statusList) == 'undefined') {
-      statusChangerConfig.statusList = [ 'online', 'offline', 'sleeping', 'around(A)', 'around(R)' ];
+      statusChangerConfig.statusList = [ 'online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)' ];
   }
  
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
