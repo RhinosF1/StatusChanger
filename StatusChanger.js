@@ -4,7 +4,7 @@
 //     Modified by Xenocidic to simply use /Status as a one word indicator,
 //     Modified by Kraftlos to include Sleep status
 //     Modified by APerson for compatibility with {{UserStatus}}
-//     Modified by RhinosF1 for compatibili with his script.
+//     Modified by RhinosF1 for compatibility with his script.
 // compatible with {{User:RhinosF1/Template/StatusMonitor}}
 addOnloadHook(function (){
   //Check if the config is defined
@@ -19,11 +19,16 @@ addOnloadHook(function (){
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
       statusChangerConfig.statusPage = 'User:' + wgUserName + '/Status';
   }
- 
+ var message;
   //Add the links
   for (var i=0; i<statusChangerConfig.statusList.length; i++) {
     var stat = statusChangerConfig.statusList[i];
-    var message = (stat === "sleeping") ?  link = "asleep" : link = stat;
+if (stat === "sleeping") {  message = "asleep" ;
+}
+ else if(stat === "BOW(A)") {  message = "busy dealing with something on-wiki" ; }
+  else if (stat === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
+ else if (stat === "around(A)") {  message = "around" ;}
+  else if (stat === "around(R)") {  message = "around";}
     addPortletLink(
       "p-personal", //target tab - personal links
       wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=submit&newstatus=" + stat, //link URL
@@ -42,7 +47,7 @@ addOnloadHook(function (){
   document.getElementById('wpTextbox1').value = status;
   if (status == "sleep")
   { status = "sleeping"; }
-  document.getElementById('wpSummary').value = wgUserName + " is now " + status +".";
+  document.getElementById('wpSummary').value = wgUserName + " is now " + message +".";
   document.getElementById('wpMinoredit').checked = true;
   //Submit it!
   document.getElementById('editform').submit();
