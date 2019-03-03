@@ -4,7 +4,7 @@
 //     Modified by Xenocidic to simply use /Status as a one word indicator,
 //     Modified by Kraftlos to include Sleep status
 //     Modified by APerson for compatibility with {{UserStatus}}
-//     Modified by RhinosF1 for compatibili with his script.
+//     Modified by RhinosF1 for compatibility with his script.
 // compatible with {{User:RhinosF1/Template/StatusMonitor}}
 addOnloadHook(function (){
   //Check if the config is defined
