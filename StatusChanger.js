@@ -23,11 +23,13 @@ addOnloadHook(function (){
   //Add the links
   for (var i=0; i<statusChangerConfig.statusList.length; i++) {
     var stat = statusChangerConfig.statusList[i];
-    var message0 = (stat0 === "sleeping") ?  link = "asleep" : link = stat0;
-    var message1 = (stat1 === "BOW(A)") ?  link = "busy dealing with something on-wiki" : link = stat1;
-    var message2 = (stat2 === "BOW(R)") ?  link = "very busy dealing with something on-wiki" : link = stat2;
-    var message3 = (stat3 === "around(A)") ?  link = "around" : link = stat3;
-    var message4 = (stat4 === "around(R)") ?  link = "around" : link = stat4;
+var message;
+if (stat === "sleeping") {  message = "asleep" ;
+}
+ else if(stat1 === "BOW(A)") {  message = "busy dealing with something on-wiki" ; }
+  else if (stat2 === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
+ else if (stat3 === "around(A)") {  message = "around" ;}
+  else if (stat4 === "around(R)") {  message = "around";}
     addPortletLink(
       "p-personal", //target tab - personal links
       wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=submit&newstatus=" + stat, //link URL
