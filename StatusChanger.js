@@ -29,6 +29,8 @@ if (stat === "sleeping") {  message = "asleep" ;
   else if (stat === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
  else if (stat === "around(A)") {  message = "around" ;}
   else if (stat === "around(R)") {  message = "around";}
+    else if (stat === "online") {  message = "online";}
+    else if (stat === "offline") {  message = "offline";}
     addPortletLink(
       "p-personal", //target tab - personal links
       wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=submit&newstatus=" + stat, //link URL
