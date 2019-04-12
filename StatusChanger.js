@@ -19,7 +19,7 @@ if (stat === "sleeping") {  message = "asleep" ;
   else if (stat === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
  else if (stat === "around(A)") {  message = "around" ;}
   else if (stat === "around(R)") {  message = "around";}
-   else if (stat === "WB" { message = "on wikibreak;}
+   else if (stat === "WB" ){ message = "on wikibreak";}
 return message;
 }
   if (typeof(statusChangerConfig.statusList) == 'undefined') {
