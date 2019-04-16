@@ -4,33 +4,43 @@
 //     Modified by Xenocidic to simply use /Status as a one word indicator,
 //     Modified by Kraftlos to include Sleep status
 //     Modified by APerson for compatibility with {{UserStatus}}
-//     Modified by RhinosF1 for compatibili with his script.
+//     Modified by RhinosF1 for compatibility with his script.
 // compatible with {{User:RhinosF1/Template/StatusMonitor}}
-addOnloadHook(function () {
+addOnloadHook(function() {
   //Check if the config is defined
-  if (typeof (statusChangerConfig) == 'undefined') {
-    statusChangerConfig = {}
+  if (typeof(statusChangerConfig) == 'undefined') {
+    statusChangerConfig = {};
   }
-  var setMessage = function (stat) {
+  var setMessage = function(stat) {
     var message = stat;
-    if (stat === "sleeping") {
-      message = "asleep";
-    } else if (stat === "BOW(A)") {
-      message = "busy dealing with something on-wiki";
-    } else if (stat === "BOW(R)") {
-      message = "very busy dealing with something on-wiki";
-    } else if (stat === "around(A)") {
-      message = "around";
-    } else if (stat === "around(R)") {
-      message = "around";
+    switch (message) {
+      case "sleeping":
+        message = "asleep";
+        break;
+      case "BOW(A)":
+        message = "very busy dealing with something on-wiki";
+        break;
+      case "BOW(R)":
+        message = "very busy dealing with something on-wiki";
+        break;
+      case "around(A)":
+        message = "around";
+        break;
+      case "around(R)":
+        message = "around";
+        break;
+      case "WB":
+        message = "on wikibreak";
+        break;
     }
     return message;
-  }
-  if (typeof (statusChangerConfig.statusList) == 'undefined') {
-    statusChangerConfig.statusList = ['online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)'];
+  };
+
+  if (typeof(statusChangerConfig.statusList) == 'undefined') {
+    statusChangerConfig.statusList = ['online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)', 'WB'];
   }
 
-  if (typeof (statusChangerConfig.statusPage) == 'undefined') {
+  if (typeof(statusChangerConfig.statusPage) == 'undefined') {
     statusChangerConfig.statusPage = 'User:' + wgUserName + '/Status';
   }
   var msg;
