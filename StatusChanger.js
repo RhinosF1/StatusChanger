@@ -6,35 +6,52 @@
 //     Modified by APerson for compatibility with {{UserStatus}}
 //     Modified by RhinosF1 for compatibility with his script.
 // compatible with {{User:RhinosF1/Template/StatusMonitor}}
-addOnloadHook(function (){
+$(function() {
+  var wgUserName = mw.config.get("wgUserName");
+  var wgServer = mw.config.get("wgServer");
+  var wgScript = mw.config.get("wgScript");
   //Check if the config is defined
   if (typeof(statusChangerConfig) == 'undefined') {
-    statusChangerConfig = {}
+    statusChangerConfig = {};
   }
- var setMessage = function (stat){
-var message=stat;
-if (stat === "sleeping") {  message = "asleep" ;
-}
- else if(stat === "BOW(A)") {  message = "busy dealing with something on-wiki" ; }
-  else if (stat === "BOW(R)") {  message = "very busy dealing with something on-wiki" ; }
- else if (stat === "around(A)") {  message = "around" ;}
-  else if (stat === "around(R)") {  message = "around";}
-   else if (stat === "WB" ){ message = "on wikibreak";}
-return message;
-}
+  var setMessage = function(stat) {
+    var message = stat;
+    switch (message) {
+      case "sleeping":
+        message = "asleep";
+        break;
+      case "BOW(A)":
+        message = "very busy dealing with something on-wiki";
+        break;
+      case "BOW(R)":
+        message = "very busy dealing with something on-wiki";
+        break;
+      case "around(A)":
+        message = "around";
+        break;
+      case "around(R)":
+        message = "around";
+        break;
+      case "WB":
+        message = "on wikibreak";
+        break;
+    }
+    return message;
+  };
+
   if (typeof(statusChangerConfig.statusList) == 'undefined') {
-      statusChangerConfig.statusList = [ 'online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)', 'WB' ];
+    statusChangerConfig.statusList = ['online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)', 'WB'];
   }
- 
+
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
-      statusChangerConfig.statusPage = 'User:' + wgUserName + '/Status';
+    statusChangerConfig.statusPage = 'User:' + wgUserName + '/Status';
   }
- var msg;
+  var msg;
   //Add the links
-  for (var i=0; i<statusChangerConfig.statusList.length; i++) {
+  for (var i = 0; i < statusChangerConfig.statusList.length; i++) {
     var stat = statusChangerConfig.statusList[i];
-msg=setMessage (stat);
-    addPortletLink(
+    msg = setMessage(stat);
+    mw.util.addPortletLink(
       "p-personal", //target tab - personal links
       wgServer + wgScript + "?title=" + statusChangerConfig.statusPage + "&action=submit&newstatus=" + stat, //link URL
       stat, //link text
@@ -43,21 +60,22 @@ msg=setMessage (stat);
       "", //???
       document.getElementById("pt-logout")); //add before logout button
   }
- 
+
   if (location.href.indexOf("&action=submit&newstatus=") == -1) return; //Are we here to auto-edit the status?
   //Get new status
   statusRegExp = /&action=submit&newstatus=(.*)/;
   var status = statusRegExp.exec(location.href)[1];
   //Modify the form
   document.getElementById('wpTextbox1').value = status;
-msg=setMessage (status);
-  if (status == "sleep")
-  { status = "sleeping"; }
-  
-document.getElementById('wpSummary').value = wgUserName + " is now " + msg +".";
+  msg = setMessage(status);
+  if (status == "sleep") {
+    status = "sleeping";
+  }
+
+  document.getElementById('wpSummary').value = wgUserName + " is now " + msg + ".";
   document.getElementById('wpMinoredit').checked = true;
   //Submit it!
   document.getElementById('editform').submit();
 });
- 
+
 //[[Category:Wikipedia scripts|statusChanger]]
