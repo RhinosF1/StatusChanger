@@ -17,30 +17,36 @@ $(function() {
   var setMessage = function(stat) {
     var message = stat;
     switch (message) {
-      case "sleeping":
+      case "zzz":
         message = "asleep";
         break;
-      case "BOW(A)":
+      case "BOW-A":
         message = "very busy dealing with something on-wiki";
         break;
-      case "BOW(R)":
+      case "BOW-R":
         message = "very busy dealing with something on-wiki";
         break;
-      case "around(A)":
+      case "AFK-A":
         message = "around";
         break;
-      case "around(R)":
+      case "AFK-R":
         message = "around";
         break;
       case "WB":
         message = "on wikibreak";
+        break;
+      case "on":
+        message = "online"
+        break;
+      case "off":
+        message = "offline"
         break;
     }
     return message;
   };
 
   if (typeof(statusChangerConfig.statusList) == 'undefined') {
-    statusChangerConfig.statusList = ['online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)', 'WB'];
+    statusChangerConfig.statusList = ['on', 'off', 'zzz', 'AFK-A', 'AFK-R', 'BOW-A', 'BOW-R', 'WB'];
   }
 
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
