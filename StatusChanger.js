@@ -6,6 +6,7 @@
 //     Modified by APerson for compatibility with {{UserStatus}}
 //     Modified by RhinosF1 for compatibility with his script.
 // compatible with {{User:RhinosF1/Template/StatusMonitor}}
+// From https://raw.githubusercontent.com/RhinosF1/StatusChanger/master/StatusChanger.js
 $(function() {
   var wgUserName = mw.config.get("wgUserName");
   var wgServer = mw.config.get("wgServer");
@@ -17,30 +18,33 @@ $(function() {
   var setMessage = function(stat) {
     var message = stat;
     switch (message) {
-      case "sleeping":
-        message = "asleep";
-        break;
-      case "BOW(A)":
-        message = "very busy dealing with something on-wiki";
-        break;
-      case "BOW(R)":
-        message = "very busy dealing with something on-wiki";
-        break;
-      case "around(A)":
-        message = "around";
-        break;
-      case "around(R)":
-        message = "around";
-        break;
-      case "WB":
-        message = "on wikibreak";
-        break;
+    	case "On":
+    		message = "online";
+    		break;
+    	case "Around-A":
+        	message = "around";
+    		break;
+    	case "BOW-A":
+        	message = "busy dealing with something on wikis";
+        	break;
+        case "BOW-R":
+        	message = "very busy dealing with something on wikis";
+        	break;
+        case "Around-R":
+        	message = "around";
+        	break;
+    	case "Off":
+    		message = "offline";
+    		break;
+        case "WB":
+        	message = "on wikibreak";
+        	break;
     }
     return message;
   };
 
   if (typeof(statusChangerConfig.statusList) == 'undefined') {
-    statusChangerConfig.statusList = ['online', 'offline', 'sleeping', 'around(A)', 'around(R)', 'BOW(A)', 'BOW(R)', 'WB'];
+    statusChangerConfig.statusList = ['On', 'Around-A', 'BOW-A', 'Around-R', 'BOW-R', 'Off', 'WB'];
   }
 
   if (typeof(statusChangerConfig.statusPage) == 'undefined') {
@@ -77,5 +81,3 @@ $(function() {
   //Submit it!
   document.getElementById('editform').submit();
 });
-
-//[[Category:Wikipedia scripts|statusChanger]]
